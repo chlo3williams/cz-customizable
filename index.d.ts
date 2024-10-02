@@ -24,6 +24,7 @@ declare module "cz-customizable" {
     fallbackTicketNumber?: string;
     ticketNumberPrefix?: string;
     ticketNumberSuffix?: string;
+    ticketNumberPosition?: string;
     breakingPrefix?: string;
     footerPrefix?: string;
     subjectLimit?: number;

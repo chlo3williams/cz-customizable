@@ -210,10 +210,11 @@ describe('cz-customizable', () => {
     const mockCz = getMockedCz(answers);
     czModule.prompter(mockCz, commit);
 
+    /* eslint-disable no-unused-vars */
     const firstPart = 'feat(myScope): ';
 
     expect(commit.mock.calls[0][0]).toMatchInlineSnapshot(`
-      "${firstPart + answers.subject.slice(0, 100)}
+      "feat(myScope): 0123456789-0123456789-0123456789-0123456789-0123456789-0123456789-0123456789-01234567
 
       0123456789-0123456789-0123456789-0123456789-0123456789-0123456789-0123456789-0123456789-0123456789-0123456789
       body-second-line
@@ -399,6 +400,6 @@ describe('cz-customizable', () => {
 
     const mockCz = getMockedCz(answers);
     czModule.prompter(mockCz, commit);
-    expect(commit).toHaveBeenCalledWith('feat(myScope): [TICKET-1234] create a new cool feature');
+    expect(commit).toHaveBeenCalledWith('feat(myScope): [TICKET-1234]create a new cool feature');
   });
 });

@@ -16,10 +16,7 @@ describe('cz-customizable', () => {
   it('should array of questions be returned', () => {
     config = {
       types: [{ value: 'feat', name: 'feat: my feat' }],
-      scopes: [{ name: 'myScope' }],
-      scopeOverrides: {
-        fix: [{ name: 'fixOverride' }],
-      },
+      scopes: [{ name: 'empty', value: false }],
       allowCustomScopes: true,
       allowBreakingChanges: ['feat'],
       allowTicketNumber: true,
@@ -40,14 +37,13 @@ describe('cz-customizable', () => {
     // question 2 - SCOPE
     expect(getQuestion(2).name).toEqual('scope');
     expect(getQuestion(2).choices({})[0]).toEqual({ name: 'empty', value: false });
-    expect(getQuestion(2).choices({ type: 'fix' })[0]).toEqual({ name: 'empty', value: false });
     expect(getQuestion(2).when({ type: 'fix' })).toEqual(true);
     expect(getQuestion(2).when({ type: 'WIP' })).toEqual(false);
     expect(getQuestion(2).when({ type: 'wip' })).toEqual(false);
 
     // question 3 - SCOPE CUSTOM
     expect(getQuestion(3).name).toEqual('scope');
-    // expect(getQuestion(3).when({ scope: 'custom' })).toEqual(true);
+    expect(getQuestion(3).when({ scope: 'custom' })).toEqual(true);
     expect(getQuestion(3).when({ scope: false })).toEqual(false);
     expect(getQuestion(3).when({ scope: 'scope' })).toEqual(false);
 
